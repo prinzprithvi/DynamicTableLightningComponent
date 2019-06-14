@@ -1,0 +1,26 @@
+<aura:component controller="DynamicTableComponentController">
+	<aura:attribute type="List" name="fieldAPIs" default="['Contact_Full_Name__c','Account.Name','Title','Industry_Type__c','Functional_Area_1__c','Off_Limit__c','Contact_Off_Limit__c']" required="true"/>
+	<aura:attribute type="String" name="objectAPI" default="Contact" required="true"/>
+	<aura:attribute name="searchResult" type="List" description="use for store and display account list return from server"/>
+	
+	<aura:attribute type="String" name="initialSearchString" default="" required="true"/>
+	<aura:attribute type="String" name="replaceHeaders" default="" />
+	
+	<aura:attribute type="Map" name="selectedRecord" default="{}"/>
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	<aura:registerEvent name="doneEvent" type="c:done"/>
+
+	<aura:method name="go" action="{!c.go}" description="Sample"> 
+	    <aura:attribute name="searchString" type="String" default="param1"/> 
+	</aura:method>
+
+	<!--ui:scrollerWrapper class="scrollerSize"-->
+        <div class="slds-size_2-of-2">
+            <div id='sfdctable' aura:id='sfdcDiv'>
+                <!-- devision that will show the dynamic content -->
+            </div>
+        </div>
+    <!--/ui:scrollerWrapper-->
+
+</aura:component>
